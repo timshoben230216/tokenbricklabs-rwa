@@ -11,7 +11,7 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error) {
-    console.error('VaultX interface error', error);
+    console.error('BrickX interface error', error);
   }
 
   render() {

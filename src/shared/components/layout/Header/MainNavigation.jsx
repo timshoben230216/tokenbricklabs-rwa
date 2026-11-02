@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Account from 'features/wallet/WalletAccount';
 import SideDrawer from './SideDrawer';
 import Contracts from 'shared/components/common/Contracts';
-import vaultxMark from 'assets/images/vaultx-mark.svg';
+import vaultxMark from 'assets/images/vaultx-logo.png';
 
 const NAV = [
   { label: 'Assets', href: '/gallery' },
@@ -17,11 +17,11 @@ const NAV = [
 function Logo() {
   const navigate = useNavigate();
   return (
-    <button type="button" onClick={() => navigate('/')} aria-label="VaultX home" style={{ display: 'flex', alignItems: 'center', gap: 11, flexShrink: 0, cursor: 'pointer', background: 'transparent', padding: 0 }}>
-      <img src={vaultxMark} alt="" width="38" height="38" style={{ borderRadius: 11 }} />
+    <button type="button" onClick={() => navigate('/')} aria-label="BrickX home" style={{ display: 'flex', alignItems: 'center', gap: 11, flexShrink: 0, cursor: 'pointer', background: 'transparent', padding: 0 }}>
+      <img src={vaultxMark} alt="" width="38" height="38" style={{ objectFit: 'contain' }} />
       <div style={{ textAlign: 'left' }}>
         <div style={{ fontSize: 17, fontWeight: 800, color: '#111827', lineHeight: 1, letterSpacing: '-.04em' }}>
-          Vault<span style={{ color: 'var(--brand)' }}>X</span>
+          Brick<span style={{ color: 'var(--brand)' }}>X</span>
         </div>
         <div className="mono" style={{ fontSize: 7, color: '#768196', letterSpacing: '.19em', textTransform: 'uppercase', marginTop: 4 }}>
           Capital workspace

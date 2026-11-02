@@ -20,7 +20,7 @@ export default function Contact() {
 
   const prepareSummary = async (event) => {
     event.preventDefault();
-    const summary = [`VaultX inquiry: ${type}`, `Name: ${name || 'Not provided'}`, '', message || 'No message provided.'].join('\n');
+    const summary = [`BrickX inquiry: ${type}`, `Name: ${name || 'Not provided'}`, '', message || 'No message provided.'].join('\n');
     await navigator.clipboard?.writeText(summary);
     setStatus('Inquiry summary copied. No data was sent.');
   };
@@ -39,7 +39,7 @@ export default function Contact() {
         <div className="vx-container" style={{ display: 'grid', gridTemplateColumns: '.78fr 1.22fr', gap: 20, alignItems: 'start' }}>
           <div>
             <div className="vx-card-strong" style={{ padding: 23, marginBottom: 16 }}>
-              <div className="vx-kicker">Public VaultX address</div>
+              <div className="vx-kicker">Public BrickX address</div>
               <h2 style={{ margin: '8px 0 10px', fontSize: 24, letterSpacing: '-.04em' }}>Verify before interacting.</h2>
               <p className="vx-copy" style={{ margin: '0 0 16px', fontSize: 12.5 }}>Use official project materials and a trusted explorer to verify every deployed address before sending funds or granting approvals.</p>
               <div className="mono" style={{ padding: 14, borderRadius: 13, background: 'var(--brand-soft)', color: 'var(--brand-deep)', border: '1px solid #cbd4ff', wordBreak: 'break-all', fontSize: 10, lineHeight: 1.7 }}>{VAULTX_PUBLIC_ADDRESS}</div>

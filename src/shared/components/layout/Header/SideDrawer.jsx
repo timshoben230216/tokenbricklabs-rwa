@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import vaultxMark from 'assets/images/vaultx-mark.svg';
+import vaultxMark from 'assets/images/vaultx-logo.png';
 
 export default function SideDrawer({ mainLinks, onClose, open, handleClickContracts }) {
   const { pathname } = useLocation();
@@ -29,9 +29,9 @@ export default function SideDrawer({ mainLinks, onClose, open, handleClickContra
       <aside role="dialog" aria-modal="true" aria-label="Navigation" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: 'min(312px, 90vw)', overflowY: 'auto', background: '#fff', borderRight: '1px solid #dde2eb', boxShadow: '20px 0 70px rgba(11,18,32,.18)' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', borderBottom: '1px solid #dde2eb' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-          <img src={vaultxMark} alt="" width="38" height="38" style={{ borderRadius: 11 }} />
+          <img src={vaultxMark} alt="" width="38" height="38" style={{ objectFit: 'contain' }} />
           <div>
-            <div style={{ fontSize: 18, color: '#111827', fontWeight: 800, letterSpacing: '-.04em' }}>Vault<span style={{ color: 'var(--brand)' }}>X</span></div>
+            <div style={{ fontSize: 18, color: '#111827', fontWeight: 800, letterSpacing: '-.04em' }}>Brick<span style={{ color: 'var(--brand)' }}>X</span></div>
             <div className="mono" style={{ fontSize: 7, color: '#7d8798', letterSpacing: '.18em', textTransform: 'uppercase', marginTop: 3 }}>Capital workspace</div>
           </div>
         </div>

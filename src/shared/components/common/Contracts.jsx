@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import vaultxMark from 'assets/images/vaultx-mark.svg';
+import vaultxMark from 'assets/images/vaultx-logo.png';
 import { CONTRACTS_BY_CHAIN, NETWORKS, isAddress } from 'shared/config/contracts';
 
 const VAULTX_PUBLIC_ADDRESS = import.meta.env.VITE_PUBLIC_VAULTX_ADDRESS || '0xBb569C738f56348B21a84D520f679fe41Fd01cc5';
@@ -18,10 +18,10 @@ function buildRows() {
 
   const rows = [
     {
-      label: 'Public VaultX Address',
+      label: 'Public BrickX Address',
       value: VAULTX_PUBLIC_ADDRESS,
       status: 'Public',
-      note: 'Primary public VaultX wallet address used for project communication and transparency. This is not used as the presale contract unless explicitly configured in .env.',
+      note: 'Primary public BrickX wallet address used for project communication and transparency. This is not used as the presale contract unless explicitly configured in .env.',
       copyable: true,
     },
   ];
@@ -29,14 +29,14 @@ function buildRows() {
   if (deployed.length === 0) {
     rows.push(
       {
-        label: 'VaultX Token',
+        label: 'BrickX Token',
         value: 'Not configured in .env',
         status: 'Disabled',
-        note: 'Set VITE_TOKEN_ADDRESS or VITE_TOKEN_ADDRESS_<CHAIN_ID> after deploying VaultXToken.',
+        note: 'Set VITE_TOKEN_ADDRESS or VITE_TOKEN_ADDRESS_<CHAIN_ID> after deploying the BrickX token.',
         copyable: false,
       },
       {
-        label: 'VaultX Presale',
+        label: 'BrickX Presale',
         value: 'Not configured in .env',
         status: 'Disabled',
         note: 'Set VITE_PRESALE_ADDRESS or VITE_PRESALE_ADDRESS_<CHAIN_ID>. Frontend presale actions stay disabled until this is valid.',
@@ -193,8 +193,8 @@ export default function Contracts({ open, handleClose }) {
       <Box sx={{ p: { xs: 2.5, sm: 3.5, md: 4 }, overflowY: 'auto', maxHeight: 'calc(86vh - 3px)', overscrollBehavior: 'contain', '&::-webkit-scrollbar': { width: 8 }, '&::-webkit-scrollbar-thumb': { background: '#B8C1D0', borderRadius: 20 }, '&::-webkit-scrollbar-track': { background: '#EEF1F6' } }}>
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems={{ xs: 'flex-start', sm: 'center' }} justifyContent="space-between" sx={{ mb: 2.6 }}>
           <Stack direction="row" spacing={1.6} alignItems="center">
-            <Box sx={{ width: 52, height: 52, borderRadius: '16px', p: '3px', background: 'var(--brand-soft)' }}>
-              <Box component="img" src={vaultxMark} alt="VaultX" sx={{ width: '100%', height: '100%', borderRadius: '15px' }} />
+            <Box sx={{ width: 52, height: 52, display: 'grid', placeItems: 'center' }}>
+              <Box component="img" src={vaultxMark} alt="BrickX" sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </Box>
             <Box>
               <Typography sx={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: { xs: 26, sm: 32 }, fontWeight: 800, color: 'var(--text)', letterSpacing: '-.055em', lineHeight: 1 }}>

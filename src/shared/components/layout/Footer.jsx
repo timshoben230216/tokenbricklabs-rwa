@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import vaultxMark from 'assets/images/vaultx-mark.svg';
+import vaultxMark from 'assets/images/vaultx-logo.png';
 
 const GROUPS = {
   Platform: [
@@ -27,9 +27,9 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.45fr repeat(3,1fr)', gap: 36, marginBottom: 36 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 15 }}>
-              <img src={vaultxMark} alt="" width="42" height="42" style={{ borderRadius: 12 }} />
+              <img src={vaultxMark} alt="" width="42" height="42" style={{ objectFit: 'contain' }} />
               <div>
-                <div style={{ fontSize: 21, fontWeight: 800, letterSpacing: '-.04em' }}>Vault<span style={{ color: 'var(--brand)' }}>X</span></div>
+                <div style={{ fontSize: 21, fontWeight: 800, letterSpacing: '-.04em' }}>Brick<span style={{ color: 'var(--brand)' }}>X</span></div>
                 <div className="mono" style={{ fontSize: 7, color: 'var(--dim)', letterSpacing: '.18em', textTransform: 'uppercase', marginTop: 3 }}>Real asset capital workspace</div>
               </div>
             </div>
@@ -49,7 +49,7 @@ export default function Footer() {
           ))}
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: 21, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <div className="mono" style={{ fontSize: 9, color: '#717b8d', letterSpacing: '.06em' }}>© 2026 VAULTX PROTOCOL · PROOF OF CONCEPT</div>
+          <div className="mono" style={{ fontSize: 9, color: '#717b8d', letterSpacing: '.06em' }}>© 2026 BRICKX PROTOCOL · PROOF OF CONCEPT</div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <span className="vx-status">Contract-gated</span>
             <span className="vx-status warning">Testnet only</span>

@@ -101,7 +101,7 @@ const PresalePanel = () => {
     } catch (err) {
       setDashboard(null);
       setBuyer(null);
-      setPresaleError('Unable to read the presale contract on this network. Confirm that the configured VITE_PRESALE_ADDRESS points to the deployed VaultXPresale contract.');
+      setPresaleError('Unable to read the presale contract on this network. Confirm that the configured VITE_PRESALE_ADDRESS points to the deployed BrickX presale contract.');
     } finally {
       setLoading(false);
     }
@@ -195,7 +195,7 @@ const PresalePanel = () => {
                     ['Current state', 'Read-only / actions disabled'],
                   ]}
                 >
-                  This is the correct production behavior. The frontend should not send transactions until the deployed VaultXPresale address is configured for the connected chain.
+                  This is the correct production behavior. The frontend should not send transactions until the deployed BrickX presale address is configured for the connected chain.
                 </LockedPanel>
               )}
 
