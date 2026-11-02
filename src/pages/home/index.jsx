@@ -7,7 +7,7 @@ import RoadmapSection from 'features/home/RoadmapSection';
 import PartnersSection from 'features/home/PartnersSection';
 
 const Home = () => (
-  <>
+  <div className="bx-home">
     <HeroSection />
     <StatsBar />
     <FeaturesSection />
@@ -15,7 +15,7 @@ const Home = () => (
     <HowToSection />
     <RoadmapSection />
     <PartnersSection />
-  </>
+  </div>
 );
 
 export default Home;

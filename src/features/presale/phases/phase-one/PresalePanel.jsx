@@ -22,7 +22,7 @@ const STATE_COLORS = ['default', 'success', 'success', 'error'];
 const FALLBACK_TERMS = [
   ['Contract status', 'Waiting for deployment'],
   ['Required step', 'Connect wallet first'],
-  ['Token', 'VTX'],
+  ['Token', 'TBL'],
   ['Sale actions', 'Disabled until contract is configured'],
 ];
 
@@ -101,7 +101,7 @@ const PresalePanel = () => {
     } catch (err) {
       setDashboard(null);
       setBuyer(null);
-      setPresaleError('Unable to read the presale contract on this network. Confirm that the configured VITE_PRESALE_ADDRESS points to the deployed BrickX presale contract.');
+      setPresaleError('Unable to read the presale contract on this network. Confirm that the configured VITE_PRESALE_ADDRESS points to the deployed BTL presale contract.');
     } finally {
       setLoading(false);
     }
@@ -133,7 +133,7 @@ const PresalePanel = () => {
     ? Math.min((Number(ethers.utils.formatEther(dashboard.metrics.totalRaisedEth)) / Number(ethers.utils.formatEther(dashboard.config.hardCap))) * 100, 100)
     : 0;
 
-  const actionLabel = isActive ? 'Buy VTX' : canClaim ? 'Claim VTX' : canRefund ? 'Withdraw refund' : 'Action unavailable';
+  const actionLabel = isActive ? 'Buy TBL' : canClaim ? 'Claim TBL' : canRefund ? 'Withdraw refund' : 'Action unavailable';
 
   const handleAction = async () => {
     if (!contract) return;
@@ -195,7 +195,7 @@ const PresalePanel = () => {
                     ['Current state', 'Read-only / actions disabled'],
                   ]}
                 >
-                  This is the correct production behavior. The frontend should not send transactions until the deployed BrickX presale address is configured for the connected chain.
+                  This is the correct production behavior. The frontend should not send transactions until the deployed BTL presale address is configured for the connected chain.
                 </LockedPanel>
               )}
 
@@ -214,7 +214,7 @@ const PresalePanel = () => {
 
               {dashboard && (
                 <>
-                  <Box sx={{ mb: 3, p: '20px', borderRadius: '16px', background: 'var(--brand-soft)', border: '1px solid #cbd4ff' }}>
+                  <Box sx={{ mb: 3, p: '20px', borderRadius: '16px', background: 'var(--brand-soft)', border: '1px solid #c9d8cd' }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="baseline" mb={1.5}>
                       <Typography sx={{ fontSize: '28px', color: 'var(--gold-2)', fontWeight: 800 }}>
                         {formatEth(dashboard.metrics.totalRaisedEth)} {network.symbol}
@@ -233,7 +233,7 @@ const PresalePanel = () => {
                   <Box sx={{ mb: 3, p: '16px 20px', borderRadius: '16px', border: '1px solid rgba(228,211,169,.14)', display: 'flex', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap' }}>
                     <Box>
                       <Typography sx={{ fontSize: '12px', color: 'var(--muted)' }}>Current Rate</Typography>
-                      <Typography sx={{ fontSize: '18px', color: 'var(--gold-2)', fontWeight: 800 }}>1 {network.symbol} = {formatToken(dashboard.config.ratePerEth, tokenDecimals)} VTX</Typography>
+                      <Typography sx={{ fontSize: '18px', color: 'var(--gold-2)', fontWeight: 800 }}>1 {network.symbol} = {formatToken(dashboard.config.ratePerEth, tokenDecimals)} TBL</Typography>
                     </Box>
                     <Box sx={{ textAlign: { xs:'left', sm:'right' } }}>
                       <Typography sx={{ fontSize: '12px', color: 'var(--muted)' }}>Contract</Typography>
@@ -256,7 +256,7 @@ const PresalePanel = () => {
                       <TextField
                         fullWidth
                         value={quote}
-                        InputProps={{ readOnly: true, endAdornment: <InputAdornment position="end"><Typography sx={{ fontSize: '13px', color: 'var(--gold-2)' }}>VTX</Typography></InputAdornment> }}
+                        InputProps={{ readOnly: true, endAdornment: <InputAdornment position="end"><Typography sx={{ fontSize: '13px', color: 'var(--gold-2)' }}>TBL</Typography></InputAdornment> }}
                       />
                     </Box>
                   )}
@@ -271,12 +271,12 @@ const PresalePanel = () => {
                       <StatRow label="Token Name" value={dashboard.tokenInfo.name} />
                       <StatRow label="Symbol" value={dashboard.tokenInfo.symbol} highlight />
                       <StatRow label="Decimals" value={String(tokenDecimals)} />
-                      <StatRow label="Total Supply" value={`${formatToken(dashboard.tokenInfo.totalSupply, tokenDecimals)} VTX`} />
+                      <StatRow label="Total Supply" value={`${formatToken(dashboard.tokenInfo.totalSupply, tokenDecimals)} TBL`} />
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <SectionLabel>Your Position</SectionLabel>
                       <StatRow label="Your Investment" value={`${formatEth(buyer?.ethDeposited)} ${network.symbol}`} highlight />
-                      <StatRow label="Your VTX Allocation" value={`${formatToken(buyer?.vtxAllocated, tokenDecimals)} VTX`} highlight />
+                      <StatRow label="Your TBL Allocation" value={`${formatToken(buyer?.vtxAllocated, tokenDecimals)} TBL`} highlight />
                       <StatRow label="Min Contribution" value={`${formatEth(dashboard.config.minContribution)} ${network.symbol}`} />
                       <StatRow label="Max Per Wallet" value={`${formatEth(dashboard.config.maxContribution)} ${network.symbol}`} />
                     </Grid>

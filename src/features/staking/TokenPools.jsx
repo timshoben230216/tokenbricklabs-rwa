@@ -35,7 +35,7 @@ export default function TokenPools() {
             type="button"
             aria-pressed={poolId === item.id}
             onClick={() => setPoolId(item.id)}
-            style={{ textAlign: 'left', padding: 15, borderRadius: 14, background: poolId === item.id ? 'var(--brand-soft)' : 'var(--surface-2)', border: `1px solid ${poolId === item.id ? '#cbd4ff' : 'var(--border)'}`, cursor: 'pointer' }}
+            style={{ textAlign: 'left', padding: 15, borderRadius: 14, background: poolId === item.id ? 'var(--brand-soft)' : 'var(--surface-2)', border: `1px solid ${poolId === item.id ? '#1e4634' : 'var(--border)'}`, cursor: 'pointer' }}
           >
             <div className="mono" style={{ color: poolId === item.id ? 'var(--brand-deep)' : 'var(--dim)', fontSize: 8, textTransform: 'uppercase' }}>{item.label}</div>
             <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{item.apr}%</strong>
@@ -54,11 +54,11 @@ export default function TokenPools() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 13 }}>
         <div style={{ padding: 16, borderRadius: 14, background: 'var(--brand-soft)' }}>
           <div className="mono" style={{ color: 'var(--brand-deep)', fontSize: 7.5, textTransform: 'uppercase' }}>Modeled term reward</div>
-          <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{termReward.toLocaleString(undefined, { maximumFractionDigits: 2 })} VTX</strong>
+          <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{termReward.toLocaleString(undefined, { maximumFractionDigits: 2 })} TBL</strong>
         </div>
         <div style={{ padding: 16, borderRadius: 14, background: 'var(--accent-soft)' }}>
           <div className="mono" style={{ color: '#0b7658', fontSize: 7.5, textTransform: 'uppercase' }}>Modeled annual reward</div>
-          <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{annualReward.toLocaleString(undefined, { maximumFractionDigits: 2 })} VTX</strong>
+          <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{annualReward.toLocaleString(undefined, { maximumFractionDigits: 2 })} TBL</strong>
         </div>
       </div>
 

@@ -15,50 +15,46 @@ const PRINCIPLES = [
 
 export default function Stake() {
   return (
-    <div className="vx-page">
-      <section className="vx-hero" style={{ padding: '72px 0 56px' }}>
-        <div className="vx-container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr .64fr', gap: 42, alignItems: 'end' }}>
-          <div>
-            <div className="vx-eyebrow">VTX utility</div>
-            <h1 className="vx-title" style={{ fontSize: 'clamp(42px,6vw,76px)', maxWidth: 820 }}>Model rewards before you lock tokens.</h1>
-            <p className="vx-copy" style={{ maxWidth: 630, margin: '20px 0 0' }}>Compare term assumptions, estimate rewards, and see exactly which configuration gates must pass before staking becomes available.</p>
+    <div className="bx-page">
+      <section className="bx-subhero">
+        <div className="vx-container">
+          <div className="bx-kicker">TBL utility</div>
+          <div className="bx-subhead">
+            <h1 className="bx-display">Model rewards before you lock tokens.</h1>
+            <p>Compare term assumptions, estimate rewards, and see exactly which configuration gates must pass before staking becomes available.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', border: '1px solid rgba(255,255,255,.14)', borderRadius: 18, overflow: 'hidden' }}>
-            {TERMS.map((term, index) => (
-              <div key={term.label} style={{ padding: 17, borderRight: index < TERMS.length - 1 ? '1px solid rgba(255,255,255,.12)' : 0, background: 'rgba(255,255,255,.035)' }}>
-                <div className="mono" style={{ color: '#91a0b8', fontSize: 7.5, letterSpacing: '.08em', textTransform: 'uppercase' }}>{term.label}</div>
-                <strong style={{ display: 'block', marginTop: 7, fontSize: 20 }}>{term.value}</strong>
-                <div style={{ marginTop: 4, color: '#95a2b8', fontSize: 9 }}>{term.note}</div>
+          <div className="bx-statgrid cols-3">
+            {TERMS.map((term) => (
+              <div key={term.label}>
+                <strong>{term.value}</strong>
+                <span>{term.label}</span>
+                <em>{term.note}</em>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ padding: '34px 0 96px' }}>
-        <div className="vx-container" style={{ display: 'grid', gridTemplateColumns: '.82fr 1.18fr', gap: 20, alignItems: 'start' }}>
+      <section className="bx-subbody">
+        <div className="vx-container bx-split">
           <div>
             <div className="vx-card-strong" style={{ padding: 23 }}>
               <div className="vx-kicker">Staking policy</div>
-              <h2 style={{ margin: '8px 0 18px', fontSize: 24, letterSpacing: '-.04em' }}>What the interface protects</h2>
+              <h2 style={{ margin: '8px 0 8px', fontSize: 32, letterSpacing: '-.04em' }}>What the interface protects</h2>
               {PRINCIPLES.map(([title, description], index) => (
-                <div key={title} style={{ display: 'grid', gridTemplateColumns: '34px 1fr', gap: 12, padding: '14px 0', borderBottom: index < PRINCIPLES.length - 1 ? '1px solid var(--border)' : 0 }}>
-                  <div className="mono" style={{ width: 32, height: 32, display: 'grid', placeItems: 'center', borderRadius: 10, background: index === 1 ? 'var(--accent-soft)' : 'var(--brand-soft)', color: index === 1 ? '#0b7658' : 'var(--brand-deep)', fontSize: 8 }}>{String(index + 1).padStart(2, '0')}</div>
-                  <div><strong style={{ fontSize: 12.5 }}>{title}</strong><p style={{ margin: '5px 0 0', color: 'var(--muted)', fontSize: 11.5, lineHeight: 1.55 }}>{description}</p></div>
+                <div key={title} className="bx-rule" style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 12, padding: '16px 0' }}>
+                  <div className="bx-index">{String(index + 1).padStart(2, '0')}</div>
+                  <div><strong style={{ fontFamily: 'Fraunces, serif', fontSize: 20 }}>{title}</strong><p style={{ margin: '6px 0 0', color: 'var(--muted)', fontSize: 14, lineHeight: 1.55 }}>{description}</p></div>
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 15, padding: 16, borderRadius: 15, background: 'var(--warning-soft)', border: '1px solid #f2d7aa', color: '#775121', fontSize: 10.5, lineHeight: 1.6 }}>
+            <div className="bx-note-warn">
               Reward rates are illustrative UI assumptions. Production rates, lock periods, and exit rules must come from the verified staking deployment.
             </div>
           </div>
           <TokenPools />
         </div>
       </section>
-      <style>{`
-        @media(max-width:920px){section .vx-container,section.vx-hero .vx-container{grid-template-columns:1fr!important}}
-        @media(max-width:560px){section.vx-hero .vx-container>div:last-child{grid-template-columns:1fr!important}}
-      `}</style>
     </div>
   );
 }

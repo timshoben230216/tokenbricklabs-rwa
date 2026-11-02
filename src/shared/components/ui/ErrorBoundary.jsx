@@ -11,7 +11,7 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error) {
-    console.error('BrickX interface error', error);
+    console.error('BTL interface error', error);
   }
 
   render() {

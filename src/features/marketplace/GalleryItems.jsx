@@ -26,7 +26,8 @@ function AssetDrawer({ asset, onClose }) {
       anchor="right"
       open={Boolean(asset)}
       onClose={onClose}
-      sx={{ zIndex: 10050, '& .MuiDrawer-paper': { width: { xs: '100%', sm: 560 }, background: '#f3f5f9' } }}
+      disablePortal
+      sx={{ zIndex: 10050, '& .MuiDrawer-paper': { width: { xs: '100%', sm: 560 }, background: '#faf7f2', color: '#1c1915' } }}
       BackdropProps={{ style: { backgroundColor: 'rgba(11,18,32,.52)' } }}
     >
       <div style={{ position: 'relative', height: 260 }}>
@@ -74,7 +75,7 @@ function AssetDrawer({ asset, onClose }) {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 12 }}>
             <div style={{ padding: 14, borderRadius: 13, background: 'var(--brand-soft)' }}>
               <div className="mono" style={{ color: 'var(--brand-deep)', fontSize: 7.5, textTransform: 'uppercase' }}>Reference units</div>
-              <strong style={{ display: 'block', marginTop: 6 }}>{units.toLocaleString()} VTX</strong>
+              <strong style={{ display: 'block', marginTop: 6 }}>{units.toLocaleString()} TBL</strong>
             </div>
             <div style={{ padding: 14, borderRadius: 13, background: 'var(--accent-soft)' }}>
               <div className="mono" style={{ color: '#0b7658', fontSize: 7.5, textTransform: 'uppercase' }}>Modeled annual amount</div>
@@ -141,7 +142,7 @@ export default function GalleryItems() {
   return (
     <div>
       <div className="vx-card-strong" style={{ padding: 18, marginBottom: 20 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(220px,1fr) 180px auto', gap: 12, alignItems: 'center' }}>
+        <div className="bx-toolbar">
           <label>
             <span className="mono" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>Search opportunities</span>
             <input className="vx-field" type="search" placeholder="Search asset, location, or ID" value={query} onChange={(event) => setQuery(event.target.value)} />
@@ -155,7 +156,7 @@ export default function GalleryItems() {
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14 }}>
           {FILTERS.map((item) => (
-            <button key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)} style={{ minHeight: 34, padding: '0 12px', borderRadius: 999, background: filter === item ? 'var(--brand)' : '#f4f6fa', color: filter === item ? '#fff' : 'var(--muted)', border: `1px solid ${filter === item ? 'var(--brand)' : 'var(--border)'}`, cursor: 'pointer', fontSize: 10.5, fontWeight: 700 }}>
+            <button key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)} style={{ minHeight: 34, padding: '0 12px', borderRadius: 999, background: filter === item ? 'var(--brand)' : 'transparent', color: filter === item ? '#fff' : 'var(--muted)', border: `1px solid ${filter === item ? 'var(--brand)' : 'var(--border)'}`, cursor: 'pointer', fontSize: 10.5, fontWeight: 700 }}>
               {item}{item === 'Watchlist' ? ` (${watchlist.length})` : ''}
             </button>
           ))}
@@ -172,7 +173,7 @@ export default function GalleryItems() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: `repeat(${compared.length},minmax(0,1fr))`, gap: 10 }}>
             {compared.map((item) => (
-              <button key={item.id} type="button" onClick={() => setSelected(item)} style={{ textAlign: 'left', padding: 14, borderRadius: 13, background: 'var(--brand-soft)', border: '1px solid #cbd4ff', cursor: 'pointer' }}>
+              <button key={item.id} type="button" onClick={() => setSelected(item)} style={{ textAlign: 'left', padding: 14, borderRadius: 13, background: 'var(--brand-soft)', border: '1px solid #c9d8cd', cursor: 'pointer' }}>
                 <div className="mono" style={{ color: 'var(--brand-deep)', fontSize: 8 }}>{item.id}</div>
                 <strong style={{ display: 'block', marginTop: 6, fontSize: 12 }}>{item.name}</strong>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginTop: 8, color: 'var(--muted)', fontSize: 10 }}><span>{item.apy}% target</span><span>{item.funded}% modeled</span></div>
@@ -189,7 +190,7 @@ export default function GalleryItems() {
           <button className="vx-btn secondary" type="button" onClick={() => { setFilter('All'); setQuery(''); }}>Reset discovery</button>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18 }}>
+        <div className="bx-catalog">
           {items.map((item) => {
             const saved = watchlist.includes(item.id);
             const comparing = compare.includes(item.id);
@@ -197,7 +198,7 @@ export default function GalleryItems() {
               <article key={item.id} className="vx-card-strong card-lift" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'relative', height: 238 }}>
                   <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(11,18,32,.74),rgba(11,18,32,.04) 62%)' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(20,18,14,.78),rgba(20,18,14,.05) 62%)' }} />
                   <div style={{ position: 'absolute', top: 14, left: 14, right: 14, display: 'flex', justifyContent: 'space-between', gap: 10 }}>
                     <span className="vx-status">{item.status}</span>
                     <button type="button" aria-label={saved ? `Remove ${item.name} from watchlist` : `Save ${item.name} to watchlist`} aria-pressed={saved} onClick={() => toggleWatchlist(item.id)} style={{ width: 36, height: 36, borderRadius: 11, background: saved ? 'var(--brand)' : 'rgba(255,255,255,.92)', color: saved ? '#fff' : '#344054', cursor: 'pointer', fontSize: 16 }}>
@@ -205,15 +206,15 @@ export default function GalleryItems() {
                     </button>
                   </div>
                   <div style={{ position: 'absolute', left: 18, bottom: 17, right: 18, color: '#fff' }}>
-                    <div className="mono" style={{ color: '#c8d2ff', fontSize: 8.5, letterSpacing: '.11em' }}>{item.id} · {item.type}</div>
+                    <div className="mono" style={{ color: '#efe6d4', fontSize: 8.5, letterSpacing: '.11em' }}>{item.id} · {item.type}</div>
                     <h2 style={{ margin: '7px 0 0', fontSize: 22, lineHeight: 1.08, letterSpacing: '-.04em' }}>{item.name}</h2>
-                    <div style={{ color: '#c4cede', fontSize: 11.5, marginTop: 6 }}>{item.location}</div>
+                    <div style={{ color: '#e6dfd2', fontSize: 11.5, marginTop: 6 }}>{item.location}</div>
                   </div>
                 </div>
                 <div style={{ padding: 20, flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
                     {[['Minimum', `$${item.min.toLocaleString()}`], ['Target APY', `${item.apy}%`], ['Occupancy', item.occupancy]].map(([label, value]) => (
-                      <div key={label} style={{ padding: 12, borderRadius: 12, background: '#f5f7fa', border: '1px solid var(--border)' }}>
+                      <div key={label} style={{ padding: 12, background: '#f3eee6', border: '1px solid var(--border)' }}>
                         <strong style={{ fontSize: 12.5 }}>{value}</strong>
                         <div className="mono" style={{ color: 'var(--dim)', fontSize: 6.8, letterSpacing: '.06em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
                       </div>
@@ -240,10 +241,6 @@ export default function GalleryItems() {
       </div>
 
       <AssetDrawer asset={selected} onClose={() => setSelected(null)} />
-      <style>{`
-        @media(max-width:1050px){div[style*='repeat(3,1fr)']{grid-template-columns:1fr 1fr!important}}
-        @media(max-width:720px){div.vx-card-strong>div[style*='minmax(220px,1fr)']{grid-template-columns:1fr!important}div[style*='repeat(3,1fr)']{grid-template-columns:1fr!important}}
-      `}</style>
     </div>
   );
 }

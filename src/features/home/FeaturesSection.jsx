@@ -9,32 +9,34 @@ const FEATURES = [
 
 export default function FeaturesSection() {
   return (
-    <section className="vx-section">
+    <section className="bx-features">
       <div className="vx-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '.9fr 1.1fr', gap: 48, alignItems: 'center', marginBottom: 42 }}>
+        <div className="bx-feature-head">
           <div>
-            <div className="vx-eyebrow">One connected workspace</div>
-            <h2 className="vx-title" style={{ fontSize: 'clamp(36px,4.6vw,62px)' }}>From diligence to portfolio operations.</h2>
-            <p className="vx-copy" style={{ marginTop: 18 }}>
-              The product separates information, eligibility, and execution so investors always understand what they are reviewing and which actions are actually available.
-            </p>
+            <div className="bx-kicker">One connected workspace</div>
+            <h2 className="bx-display">From diligence to portfolio operations.</h2>
           </div>
-          <div className="vx-image-panel" style={{ minHeight: 330, backgroundImage: `linear-gradient(120deg,rgba(11,18,32,.04),rgba(54,88,245,.12)),url(${galleryImages[1]})` }} />
+          <p>
+            The product separates information, eligibility, and execution so investors always understand what they are reviewing and which actions are actually available.
+          </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 15 }}>
-          {FEATURES.map((item) => (
-            <article key={item.title} className="vx-card card-lift" style={{ padding: 23 }}>
-              <div className="mono" style={{ width: 40, height: 40, display: 'grid', placeItems: 'center', borderRadius: 12, background: 'var(--brand-soft)', color: 'var(--brand-deep)', fontSize: 10, fontWeight: 600, marginBottom: 18 }}>{item.icon}</div>
-              <h3 style={{ margin: 0, fontSize: 17, letterSpacing: '-.025em' }}>{item.title}</h3>
-              <p className="vx-copy" style={{ margin: '11px 0 0', fontSize: 13 }}>{item.desc}</p>
-            </article>
-          ))}
+        <div className="bx-feature-body">
+          <div className="bx-feature-photo">
+            <img src={galleryImages[1]} alt="" />
+          </div>
+          <div className="bx-feature-list">
+            {FEATURES.map((item) => (
+              <article key={item.title}>
+                <div className="bx-index">{item.icon}</div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
-      <style>{`
-        @media(max-width:980px){section .vx-container>div:first-child{grid-template-columns:1fr!important}section .vx-container>div:last-child{grid-template-columns:1fr 1fr!important}}
-        @media(max-width:620px){section .vx-container>div:last-child{grid-template-columns:1fr!important}}
-      `}</style>
     </section>
   );
 }

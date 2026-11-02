@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'app/App';
 import './styles/global.css';
+import './styles/redesign.css';
 import { MoralisDappProvider } from 'providers/MoralisDappProvider/MoralisDappProvider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';

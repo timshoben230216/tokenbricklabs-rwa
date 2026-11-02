@@ -18,10 +18,10 @@ function buildRows() {
 
   const rows = [
     {
-      label: 'Public BrickX Address',
+      label: 'Public BTL Address',
       value: VAULTX_PUBLIC_ADDRESS,
       status: 'Public',
-      note: 'Primary public BrickX wallet address used for project communication and transparency. This is not used as the presale contract unless explicitly configured in .env.',
+      note: 'Primary public BTL wallet address used for project communication and transparency. This is not used as the presale contract unless explicitly configured in .env.',
       copyable: true,
     },
   ];
@@ -29,14 +29,14 @@ function buildRows() {
   if (deployed.length === 0) {
     rows.push(
       {
-        label: 'BrickX Token',
+        label: 'BTL Token',
         value: 'Not configured in .env',
         status: 'Disabled',
-        note: 'Set VITE_TOKEN_ADDRESS or VITE_TOKEN_ADDRESS_<CHAIN_ID> after deploying the BrickX token.',
+        note: 'Set VITE_TOKEN_ADDRESS or VITE_TOKEN_ADDRESS_<CHAIN_ID> after deploying the BTL token.',
         copyable: false,
       },
       {
-        label: 'BrickX Presale',
+        label: 'BTL Presale',
         value: 'Not configured in .env',
         status: 'Disabled',
         note: 'Set VITE_PRESALE_ADDRESS or VITE_PRESALE_ADDRESS_<CHAIN_ID>. Frontend presale actions stay disabled until this is valid.',
@@ -194,7 +194,7 @@ export default function Contracts({ open, handleClose }) {
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems={{ xs: 'flex-start', sm: 'center' }} justifyContent="space-between" sx={{ mb: 2.6 }}>
           <Stack direction="row" spacing={1.6} alignItems="center">
             <Box sx={{ width: 52, height: 52, display: 'grid', placeItems: 'center' }}>
-              <Box component="img" src={vaultxMark} alt="BrickX" sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <Box component="img" src={vaultxMark} alt="BTL" sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </Box>
             <Box>
               <Typography sx={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: { xs: 26, sm: 32 }, fontWeight: 800, color: 'var(--text)', letterSpacing: '-.055em', lineHeight: 1 }}>

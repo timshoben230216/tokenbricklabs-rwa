@@ -28,9 +28,9 @@ export default function About() {
       <section className="vx-hero" style={{ padding: '78px 0 68px' }}>
         <div className="vx-container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr .52fr', gap: 48, alignItems: 'end' }}>
           <div>
-            <div className="vx-eyebrow">About BrickX</div>
+            <div className="vx-eyebrow">About BTL</div>
             <h1 className="vx-title" style={{ fontSize: 'clamp(44px,6.5vw,80px)', maxWidth: 900 }}>A clearer operating layer for tokenized real assets.</h1>
-            <p className="vx-copy" style={{ maxWidth: 670, margin: '22px 0 0' }}>BrickX is a proof-of-concept investor workspace that connects asset diligence, eligibility, contract-aware execution, and portfolio monitoring.</p>
+            <p className="vx-copy" style={{ maxWidth: 670, margin: '22px 0 0' }}>BTL is a proof-of-concept investor workspace that connects asset diligence, eligibility, contract-aware execution, and portfolio monitoring.</p>
           </div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button className="vx-btn" type="button" onClick={() => navigate('/gallery')}>Explore opportunities</button>

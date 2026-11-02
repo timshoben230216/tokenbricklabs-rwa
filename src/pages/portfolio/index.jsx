@@ -50,7 +50,7 @@ export default function Portfolio() {
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'brickx-portfolio-preview.csv';
+    link.download = 'btl-portfolio-preview.csv';
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -58,52 +58,54 @@ export default function Portfolio() {
   const mask = (value) => visible ? value : '••••••';
 
   return (
-    <div className="vx-page">
-      <section className="vx-hero" style={{ padding: '72px 0 54px' }}>
-        <div className="vx-container" style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'end', gap: 28, flexWrap: 'wrap' }}>
-          <div>
-            <div className="vx-eyebrow">Portfolio operations</div>
-            <h1 className="vx-title" style={{ fontSize: 'clamp(42px,6vw,76px)', maxWidth: 760 }}>Your real asset command center.</h1>
-            <p className="vx-copy" style={{ maxWidth: 630, margin: '20px 0 0' }}>Review holdings, allocation, projected cash flow, and account activity in one exportable workspace.</p>
-          </div>
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <button className="vx-btn secondary" type="button" onClick={() => setVisible((value) => !value)}>{visible ? 'Hide values' : 'Show values'}</button>
-            <button className="vx-btn" type="button" onClick={exportCsv}>Export CSV</button>
+    <div className="bx-page">
+      <section className="bx-subhero">
+        <div className="vx-container">
+          <div className="bx-kicker">Portfolio operations</div>
+          <div className="bx-subhead">
+            <h1 className="bx-display">Your real asset command center.</h1>
+            <div>
+              <p>Review holdings, allocation, projected cash flow, and account activity in one exportable workspace.</p>
+              <div className="bx-actions" style={{ marginTop: 18 }}>
+                <button className="vx-btn secondary" type="button" onClick={() => setVisible((value) => !value)}>{visible ? 'Hide values' : 'Show values'}</button>
+                <button className="vx-btn" type="button" onClick={exportCsv}>Export CSV</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section style={{ padding: '28px 0 96px' }}>
+      <section className="bx-subbody">
         <div className="vx-container">
-          <div style={{ padding: '15px 17px', borderRadius: 15, background: account ? 'var(--accent-soft)' : 'var(--warning-soft)', border: `1px solid ${account ? '#c8eee1' : '#f2d7aa'}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 22 }}>
+          <div className="bx-banner">
             <div>
-              <div style={{ fontWeight: 800, fontSize: 13 }}>{account ? 'Wallet connected · Preview holdings remain illustrative' : 'Portfolio preview · No wallet connected'}</div>
-              <div style={{ marginTop: 4, color: 'var(--muted)', fontSize: 11.5 }}>Production holdings require indexed on-chain positions and verified asset-servicing data.</div>
+              <div style={{ fontFamily: 'Fraunces, serif', fontSize: 22 }}>{account ? 'Wallet connected · Preview holdings remain illustrative' : 'Portfolio preview · No wallet connected'}</div>
+              <div style={{ marginTop: 4, color: 'var(--muted)', fontSize: 14 }}>Production holdings require indexed on-chain positions and verified asset-servicing data.</div>
             </div>
             {!account && <Account />}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginBottom: 20 }}>
+          <div className="bx-statgrid" style={{ marginBottom: 28 }}>
             {[
               ['Illustrative value', mask(money(total)), 'Preview NAV'],
               ['Modeled annual yield', mask(`${averageTarget.toFixed(1)}%`), 'Not guaranteed'],
               ['Open holdings', HOLDINGS.length, 'Across 3 asset types'],
               ['Saved opportunities', watchlistCount, 'Stored in this browser'],
             ].map(([label, value, note]) => (
-              <div className="vx-card" key={label} style={{ padding: 20 }}>
-                <div className="vx-kicker">{label}</div>
-                <div style={{ marginTop: 10, fontSize: 27, fontWeight: 800, letterSpacing: '-.045em' }}>{value}</div>
-                <div style={{ marginTop: 7, color: 'var(--muted)', fontSize: 11 }}>{note}</div>
+              <div key={label}>
+                <span>{label}</span>
+                <strong style={{ marginTop: 10 }}>{value}</strong>
+                <em>{note}</em>
               </div>
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1.45fr .7fr', gap: 18, marginBottom: 18 }}>
+          <div className="bx-split flip" style={{ marginBottom: 28 }}>
             <div className="vx-card-strong" style={{ overflow: 'hidden' }}>
               <div style={{ padding: '21px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, borderBottom: '1px solid var(--border)' }}>
                 <div>
                   <div className="vx-kicker">Holdings</div>
-                  <h2 style={{ margin: '7px 0 0', fontSize: 21, letterSpacing: '-.035em' }}>Asset positions</h2>
+                  <h2 style={{ margin: '7px 0 0', fontSize: 28, letterSpacing: '-.035em' }}>Asset positions</h2>
                 </div>
                 <span className="vx-status warning">Illustrative data</span>
               </div>
@@ -113,7 +115,7 @@ export default function Portfolio() {
                   <tbody>
                     {HOLDINGS.map((item) => (
                       <tr key={item.id}>
-                        <td><strong>{item.asset}</strong><div className="mono" style={{ marginTop: 4, color: 'var(--dim)', fontSize: 8 }}>{item.id} · {item.type}</div></td>
+                        <td><strong>{item.asset}</strong><div className="mono" style={{ marginTop: 4, color: 'var(--dim)', fontSize: 10 }}>{item.id} · {item.type}</div></td>
                         <td>{mask(item.units.toLocaleString())}</td>
                         <td>{mask(`$${item.nav.toFixed(2)}`)}</td>
                         <td><strong>{mask(money(item.units * item.nav))}</strong></td>
@@ -128,17 +130,17 @@ export default function Portfolio() {
 
             <div className="vx-card-strong" style={{ padding: 22 }}>
               <div className="vx-kicker">Allocation</div>
-              <h2 style={{ margin: '7px 0 22px', fontSize: 21, letterSpacing: '-.035em' }}>By opportunity</h2>
+              <h2 style={{ margin: '7px 0 22px', fontSize: 28, letterSpacing: '-.035em' }}>By opportunity</h2>
               <div style={{ display: 'grid', gap: 19 }}>
-                {HOLDINGS.map((item, index) => {
+                {HOLDINGS.map((item) => {
                   const share = ((item.units * item.nav) / total) * 100;
                   return (
                     <div key={item.id}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8, fontSize: 12 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8, fontSize: 14 }}>
                         <span style={{ fontWeight: 700 }}>{item.id}</span>
-                        <span className="mono" style={{ color: 'var(--dim)', fontSize: 9 }}>{share.toFixed(1)}%</span>
+                        <span className="mono" style={{ color: 'var(--dim)', fontSize: 12 }}>{share.toFixed(1)}%</span>
                       </div>
-                      <div className="vx-progress"><span style={{ width: `${share}%`, background: index === 1 ? 'linear-gradient(90deg,#18a982,#5dd5b4)' : index === 2 ? 'linear-gradient(90deg,#7256df,#a898ef)' : undefined }} /></div>
+                      <div className="vx-progress"><span style={{ width: `${share}%` }} /></div>
                     </div>
                   );
                 })}
@@ -147,38 +149,33 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+          <div className="bx-split even">
             <div className="vx-card-strong" style={{ padding: 22 }}>
               <div className="vx-kicker">Projected schedule</div>
-              <h2 style={{ margin: '7px 0 18px', fontSize: 21, letterSpacing: '-.035em' }}>Upcoming distributions</h2>
+              <h2 style={{ margin: '7px 0 8px', fontSize: 28, letterSpacing: '-.035em' }}>Upcoming distributions</h2>
               {DISTRIBUTIONS.map((item) => (
-                <div key={item.date + item.asset} style={{ display: 'grid', gridTemplateColumns: '86px 1fr auto', gap: 12, alignItems: 'center', padding: '14px 0', borderBottom: '1px solid var(--border)' }}>
-                  <div className="mono" style={{ color: 'var(--dim)', fontSize: 8 }}>{item.date}</div>
-                  <div style={{ fontSize: 12.5, fontWeight: 700 }}>{item.asset}</div>
-                  <div style={{ textAlign: 'right' }}><strong>{mask(item.amount)}</strong><div style={{ color: 'var(--dim)', fontSize: 9, marginTop: 2 }}>{item.status}</div></div>
+                <div key={item.date + item.asset} className="bx-rule" style={{ display: 'grid', gridTemplateColumns: '96px 1fr auto', gap: 12, alignItems: 'center', padding: '14px 0' }}>
+                  <div className="mono" style={{ color: 'var(--dim)', fontSize: 11 }}>{item.date}</div>
+                  <div style={{ fontSize: 15, fontWeight: 600 }}>{item.asset}</div>
+                  <div style={{ textAlign: 'right' }}><strong>{mask(item.amount)}</strong><div style={{ color: 'var(--dim)', fontSize: 12, marginTop: 2 }}>{item.status}</div></div>
                 </div>
               ))}
             </div>
 
             <div className="vx-card-strong" style={{ padding: 22 }}>
               <div className="vx-kicker">Account trail</div>
-              <h2 style={{ margin: '7px 0 18px', fontSize: 21, letterSpacing: '-.035em' }}>Recent workspace activity</h2>
+              <h2 style={{ margin: '7px 0 8px', fontSize: 28, letterSpacing: '-.035em' }}>Recent workspace activity</h2>
               {ACTIVITY.map((item) => (
-                <div key={item.date + item.action} style={{ display: 'grid', gridTemplateColumns: '86px 1fr auto', gap: 12, alignItems: 'center', padding: '14px 0', borderBottom: '1px solid var(--border)' }}>
-                  <div className="mono" style={{ color: 'var(--dim)', fontSize: 8 }}>{item.date}</div>
-                  <div><div style={{ fontSize: 12.5, fontWeight: 700 }}>{item.action}</div><div className="mono" style={{ color: 'var(--dim)', fontSize: 8, marginTop: 3 }}>{item.asset}</div></div>
-                  <span className="vx-status" style={{ fontSize: 8 }}>{item.state}</span>
+                <div key={item.date + item.action} className="bx-rule" style={{ display: 'grid', gridTemplateColumns: '96px 1fr auto', gap: 12, alignItems: 'center', padding: '14px 0' }}>
+                  <div className="mono" style={{ color: 'var(--dim)', fontSize: 11 }}>{item.date}</div>
+                  <div><div style={{ fontSize: 15, fontWeight: 600 }}>{item.action}</div><div className="mono" style={{ color: 'var(--dim)', fontSize: 11, marginTop: 3 }}>{item.asset}</div></div>
+                  <span className="vx-status">{item.state}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-      <style>{`
-        @media(max-width:980px){section .vx-container>div[style*='repeat(4,1fr)']{grid-template-columns:1fr 1fr!important}section .vx-container>div[style*='1.45fr']{grid-template-columns:1fr!important}}
-        @media(max-width:720px){section .vx-container>div[style*='1fr 1fr']{grid-template-columns:1fr!important}}
-        @media(max-width:560px){section .vx-container>div[style*='repeat(4,1fr)']{grid-template-columns:1fr!important}}
-      `}</style>
     </div>
   );
 }

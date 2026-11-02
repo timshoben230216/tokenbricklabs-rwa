@@ -58,46 +58,48 @@ export default function Compliance() {
   ];
 
   return (
-    <div className="vx-page">
-      <section className="vx-hero" style={{ padding: '72px 0 56px' }}>
-        <div className="vx-container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr .52fr', gap: 42, alignItems: 'end' }}>
-          <div>
-            <div className="vx-eyebrow">Trust and eligibility</div>
-            <h1 className="vx-title" style={{ fontSize: 'clamp(42px,6vw,76px)', maxWidth: 820 }}>Compliance state you can understand.</h1>
-            <p className="vx-copy" style={{ maxWidth: 640, margin: '20px 0 0' }}>Prepare identity information, review transaction gates, and inspect document-anchor records before entering an asset flow.</p>
-          </div>
-          <div style={{ padding: 22, borderRadius: 20, background: 'rgba(255,255,255,.07)', border: '1px solid rgba(255,255,255,.14)' }}>
-            <div className="mono" style={{ color: '#9daeff', fontSize: 9, letterSpacing: '.12em', textTransform: 'uppercase' }}>Self-assessment progress</div>
-            <div style={{ marginTop: 9, fontSize: 32, fontWeight: 800 }}>{completed} / {CHECKS.length}</div>
-            <div className="vx-progress" style={{ marginTop: 13, background: 'rgba(255,255,255,.12)' }}><span style={{ width: `${progress}%` }} /></div>
-            <p style={{ margin: '12px 0 0', color: '#9eabc0', fontSize: 10.5, lineHeight: 1.55 }}>Local preparation only. This is not identity verification or legal eligibility approval.</p>
+    <div className="bx-page">
+      <section className="bx-subhero">
+        <div className="vx-container">
+          <div className="bx-kicker">Trust and eligibility</div>
+          <div className="bx-subhead">
+            <h1 className="bx-display">Compliance state you can understand.</h1>
+            <div>
+              <p>Prepare identity information, review transaction gates, and inspect document-anchor records before entering an asset flow.</p>
+              <div style={{ marginTop: 22, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+                <div className="mono" style={{ color: 'var(--forest)', fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase' }}>Self-assessment progress</div>
+                <div style={{ marginTop: 8, fontFamily: 'Fraunces, serif', fontSize: 40 }}>{completed} / {CHECKS.length}</div>
+                <div className="vx-progress" style={{ marginTop: 12 }}><span style={{ width: `${progress}%` }} /></div>
+                <p style={{ margin: '12px 0 0', color: 'var(--muted)', fontSize: 13, lineHeight: 1.55 }}>Local preparation only. This is not identity verification or legal eligibility approval.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section style={{ padding: '32px 0 96px' }}>
+      <section className="bx-subbody">
         <div className="vx-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '.68fr 1.32fr', gap: 18, marginBottom: 18 }}>
+          <div className="bx-split" style={{ marginBottom: 28 }}>
             <aside className="vx-card-strong" style={{ padding: 23, alignSelf: 'start' }}>
               <div className="vx-kicker">Investor profile</div>
-              <h2 style={{ margin: '8px 0 20px', fontSize: 22, letterSpacing: '-.035em' }}>Review context</h2>
+              <h2 style={{ margin: '8px 0 20px', fontSize: 32, letterSpacing: '-.035em' }}>Review context</h2>
               <label style={{ display: 'block', marginBottom: 16 }}>
-                <span className="mono" style={{ display: 'block', marginBottom: 7, color: 'var(--dim)', fontSize: 8, letterSpacing: '.08em', textTransform: 'uppercase' }}>Jurisdiction</span>
+                <span className="mono" style={{ display: 'block', marginBottom: 7, color: 'var(--dim)', fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase' }}>Jurisdiction</span>
                 <select className="vx-field" value={jurisdiction} onChange={(event) => setJurisdiction(event.target.value)}>
                   {JURISDICTIONS.map((item) => <option key={item}>{item}</option>)}
                 </select>
               </label>
               <label style={{ display: 'block' }}>
-                <span className="mono" style={{ display: 'block', marginBottom: 7, color: 'var(--dim)', fontSize: 8, letterSpacing: '.08em', textTransform: 'uppercase' }}>Investor profile</span>
+                <span className="mono" style={{ display: 'block', marginBottom: 7, color: 'var(--dim)', fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase' }}>Investor profile</span>
                 <select className="vx-field" value={investorType} onChange={(event) => setInvestorType(event.target.value)}>
                   <option>Individual</option>
                   <option>Entity</option>
                   <option>Professional investor</option>
                 </select>
               </label>
-              <div style={{ marginTop: 18, padding: 15, borderRadius: 14, background: 'var(--warning-soft)', border: '1px solid #f2d7aa' }}>
-                <div style={{ color: '#8a5b1e', fontWeight: 800, fontSize: 12 }}>Manual review required</div>
-                <p style={{ margin: '6px 0 0', color: '#775121', fontSize: 11, lineHeight: 1.55 }}>{jurisdiction} · {investorType}. No automated legal conclusion is provided by this PoC.</p>
+              <div className="bx-note-warn">
+                <div style={{ fontWeight: 700, fontSize: 14 }}>Manual review required</div>
+                <p style={{ margin: '6px 0 0', fontSize: 13, lineHeight: 1.55 }}>{jurisdiction} · {investorType}. No automated legal conclusion is provided by this PoC.</p>
               </div>
               <button className="vx-btn" type="button" onClick={() => reviewRef.current?.scrollIntoView({ behavior: 'smooth' })} style={{ width: '100%', marginTop: 18 }}>Continue checklist</button>
             </aside>
@@ -106,48 +108,36 @@ export default function Compliance() {
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
                 <div>
                   <div className="vx-kicker">Preparation checklist</div>
-                  <h2 style={{ margin: '8px 0 0', fontSize: 22, letterSpacing: '-.035em' }}>Information readiness</h2>
+                  <h2 style={{ margin: '8px 0 0', fontSize: 32, letterSpacing: '-.035em' }}>Information readiness</h2>
                 </div>
                 <button type="button" className="vx-btn ghost" onClick={() => setChecks({})}>Clear local checklist</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 20 }}>
+              <div className="bx-check-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 20 }}>
                 {CHECKS.map((item) => (
                   <button
                     key={item.id}
                     type="button"
                     aria-pressed={Boolean(checks[item.id])}
                     onClick={() => toggle(item.id)}
-                    style={{ textAlign: 'left', padding: 17, borderRadius: 15, border: `1px solid ${checks[item.id] ? '#aee3d3' : 'var(--border)'}`, background: checks[item.id] ? 'var(--accent-soft)' : 'var(--surface-2)', cursor: 'pointer' }}
+                    style={{ textAlign: 'left', padding: 17, border: `1px solid ${checks[item.id] ? '#1e4634' : 'var(--border)'}`, background: checks[item.id] ? 'var(--accent-soft)' : 'transparent', cursor: 'pointer' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <span style={{ width: 24, height: 24, borderRadius: 8, display: 'grid', placeItems: 'center', background: checks[item.id] ? 'var(--accent)' : '#fff', color: '#fff', border: `1px solid ${checks[item.id] ? 'var(--accent)' : 'var(--border-strong)'}`, fontSize: 12 }}>{checks[item.id] ? '✓' : ''}</span>
-                      <strong style={{ fontSize: 13 }}>{item.title}</strong>
+                      <span style={{ width: 22, height: 22, display: 'grid', placeItems: 'center', background: checks[item.id] ? 'var(--forest)' : 'transparent', color: '#f7f1e6', border: `1px solid ${checks[item.id] ? 'var(--forest)' : 'var(--border-strong)'}`, fontSize: 12 }}>{checks[item.id] ? '✓' : ''}</span>
+                      <strong style={{ fontFamily: 'Fraunces, serif', fontSize: 18 }}>{item.title}</strong>
                     </div>
-                    <p style={{ margin: '9px 0 0 34px', color: 'var(--muted)', fontSize: 11.5, lineHeight: 1.55 }}>{item.desc}</p>
+                    <p style={{ margin: '9px 0 0 32px', color: 'var(--muted)', fontSize: 13, lineHeight: 1.55 }}>{item.desc}</p>
                   </button>
                 ))}
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '.82fr 1.18fr', gap: 18 }}>
-            <div className="vx-card-strong" style={{ padding: 23 }}>
-              <div className="vx-kicker">Transaction policy</div>
-              <h2 style={{ margin: '8px 0 18px', fontSize: 22, letterSpacing: '-.035em' }}>Readiness gates</h2>
-              {GATES.map(([label, passed, note]) => (
-                <div key={label} style={{ display: 'grid', gridTemplateColumns: '25px 1fr auto', alignItems: 'center', gap: 10, padding: '13px 0', borderBottom: '1px solid var(--border)' }}>
-                  <span style={{ width: 22, height: 22, display: 'grid', placeItems: 'center', borderRadius: 7, background: passed ? 'var(--accent-soft)' : 'var(--warning-soft)', color: passed ? '#0b7658' : '#9b5b17', fontSize: 11 }}>{passed ? '✓' : '!'}</span>
-                  <strong style={{ fontSize: 12.5 }}>{label}</strong>
-                  <span className={`vx-status ${passed ? '' : 'warning'}`} style={{ fontSize: 8 }}>{note}</span>
-                </div>
-              ))}
-            </div>
-
+          <div className="bx-split flip">
             <div className="vx-card-strong" style={{ overflow: 'hidden' }}>
               <div style={{ padding: '21px 22px', borderBottom: '1px solid var(--border)' }}>
                 <div className="vx-kicker">Document register</div>
-                <h2 style={{ margin: '8px 0 0', fontSize: 22, letterSpacing: '-.035em' }}>Asset disclosure records</h2>
-                <p className="vx-copy" style={{ margin: '8px 0 0', fontSize: 11.5 }}>Hashes below are illustrative UI records, not production blockchain attestations.</p>
+                <h2 style={{ margin: '8px 0 0', fontSize: 28, letterSpacing: '-.035em' }}>Asset disclosure records</h2>
+                <p style={{ margin: '8px 0 0', color: 'var(--muted)', fontSize: 14 }}>Hashes below are illustrative UI records, not production blockchain attestations.</p>
               </div>
               <div style={{ overflowX: 'auto' }}>
                 <table className="vx-data-table">
@@ -158,7 +148,7 @@ export default function Compliance() {
                         <td><strong>{document.type}</strong></td>
                         <td>{document.version}</td>
                         <td>{document.date}</td>
-                        <td><button type="button" onClick={() => copyHash(document.hash)} disabled={document.hash === 'Not anchored'} style={{ padding: 0, background: 'transparent', color: document.hash === 'Not anchored' ? 'var(--dim)' : 'var(--brand-deep)', cursor: document.hash === 'Not anchored' ? 'default' : 'pointer', fontFamily: 'IBM Plex Mono, monospace', fontSize: 9 }}>{copied === document.hash ? 'Copied' : document.hash}</button></td>
+                        <td><button type="button" onClick={() => copyHash(document.hash)} disabled={document.hash === 'Not anchored'} style={{ padding: 0, background: 'transparent', color: document.hash === 'Not anchored' ? 'var(--dim)' : 'var(--brand-deep)', cursor: document.hash === 'Not anchored' ? 'default' : 'pointer', fontFamily: 'IBM Plex Mono, monospace', fontSize: 11, border: 0 }}>{copied === document.hash ? 'Copied' : document.hash}</button></td>
                         <td><span className={`vx-status ${document.status === 'Required' ? 'warning' : ''}`}>{document.status}</span></td>
                       </tr>
                     ))}
@@ -166,12 +156,23 @@ export default function Compliance() {
                 </table>
               </div>
             </div>
+
+            <div className="vx-card-strong" style={{ padding: 23 }}>
+              <div className="vx-kicker">Transaction policy</div>
+              <h2 style={{ margin: '8px 0 8px', fontSize: 28, letterSpacing: '-.035em' }}>Readiness gates</h2>
+              {GATES.map(([label, passed, note]) => (
+                <div key={label} className="bx-rule" style={{ display: 'grid', gridTemplateColumns: '28px 1fr auto', alignItems: 'center', gap: 10, padding: '14px 0' }}>
+                  <span style={{ width: 22, height: 22, display: 'grid', placeItems: 'center', background: passed ? 'var(--accent-soft)' : '#f3ead8', color: passed ? 'var(--forest)' : '#6e562e', fontSize: 12 }}>{passed ? '✓' : '!'}</span>
+                  <strong style={{ fontSize: 15 }}>{label}</strong>
+                  <span className={`vx-status ${passed ? '' : 'warning'}`}>{note}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
       <style>{`
-        @media(max-width:980px){section .vx-container>div[style*='.68fr'],section .vx-container>div[style*='.82fr'],section.vx-hero .vx-container{grid-template-columns:1fr!important}}
-        @media(max-width:680px){section .vx-card-strong>div[style*='1fr 1fr']{grid-template-columns:1fr!important}}
+        @media(max-width:680px){.bx-check-grid{grid-template-columns:1fr!important}}
       `}</style>
     </div>
   );
